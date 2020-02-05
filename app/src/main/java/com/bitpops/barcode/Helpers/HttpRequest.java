@@ -94,7 +94,12 @@ public class HttpRequest {
 
     } catch (IOException e) {
         e.printStackTrace();
-    } finally {
+    }
+    catch (NullPointerException e) {
+        e.printStackTrace();
+    }
+    finally
+     {
         if (conn != null) {
             conn.disconnect();
         }

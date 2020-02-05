@@ -250,6 +250,9 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_LONG).show();
                         } else {
+                            Intent intent = new Intent(MainActivity.this, TransferProductActivity.class);
+                            intent.putExtra("LocationList", json_response);
+                            startActivity(intent);
                             Toast.makeText(MainActivity.this, "Error while accessing DB", Toast.LENGTH_LONG).show();
                         }
                     }

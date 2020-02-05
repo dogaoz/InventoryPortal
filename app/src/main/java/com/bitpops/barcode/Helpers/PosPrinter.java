@@ -237,39 +237,47 @@ public class PosPrinter {
     public void preparePrinter() {
 
 
-        handler = new HandlerUtils.MyHandler(iHandlerIntent);
 
-        callback = new IPosPrinterCallback.Stub() {
 
-            @Override
-            public void onRunResult(final boolean isSuccess) throws RemoteException {
-                Log.i(TAG, "result:" + isSuccess + "\n");
-            }
+        try {
+            handler = new HandlerUtils.MyHandler(iHandlerIntent);
 
-            @Override
-            public void onReturnString(final String value) throws RemoteException {
-                Log.i(TAG, "result:" + value + "\n");
-            }
-        };
+            callback = new IPosPrinterCallback.Stub() {
 
-        //绑定服务
-        Intent intent = new Intent();
-        intent.setPackage("com.iposprinter.iposprinterservice");
-        intent.setAction("com.iposprinter.iposprinterservice.IPosPrintService");
-        //startService(intent);
-        ct.bindService(intent, connectService, Context.BIND_AUTO_CREATE);
+                @Override
+                public void onRunResult(final boolean isSuccess) throws RemoteException {
+                    Log.i(TAG, "result:" + isSuccess + "\n");
+                }
 
-        //注册打印机状态接收器
-        IntentFilter printerStatusFilter = new IntentFilter();
-        printerStatusFilter.addAction(PRINTER_NORMAL_ACTION);
-        printerStatusFilter.addAction(PRINTER_PAPERLESS_ACTION);
-        printerStatusFilter.addAction(PRINTER_PAPEREXISTS_ACTION);
-        printerStatusFilter.addAction(PRINTER_THP_HIGHTEMP_ACTION);
-        printerStatusFilter.addAction(PRINTER_THP_NORMALTEMP_ACTION);
-        printerStatusFilter.addAction(PRINTER_MOTOR_HIGHTEMP_ACTION);
-        printerStatusFilter.addAction(PRINTER_BUSY_ACTION);
+                @Override
+                public void onReturnString(final String value) throws RemoteException {
+                    Log.i(TAG, "result:" + value + "\n");
+                }
+            };
 
-        ct.registerReceiver(IPosPrinterStatusListener, printerStatusFilter);
+            //绑定服务
+            Intent intent = new Intent();
+            intent.setPackage("com.iposprinter.iposprinterservice");
+            intent.setAction("com.iposprinter.iposprinterservice.IPosPrintService");
+            //startService(intent);
+            ct.bindService(intent, connectService, Context.BIND_AUTO_CREATE);
+
+            //注册打印机状态接收器
+            IntentFilter printerStatusFilter = new IntentFilter();
+            printerStatusFilter.addAction(PRINTER_NORMAL_ACTION);
+            printerStatusFilter.addAction(PRINTER_PAPERLESS_ACTION);
+            printerStatusFilter.addAction(PRINTER_PAPEREXISTS_ACTION);
+            printerStatusFilter.addAction(PRINTER_THP_HIGHTEMP_ACTION);
+            printerStatusFilter.addAction(PRINTER_THP_NORMALTEMP_ACTION);
+            printerStatusFilter.addAction(PRINTER_MOTOR_HIGHTEMP_ACTION);
+            printerStatusFilter.addAction(PRINTER_BUSY_ACTION);
+
+            ct.registerReceiver(IPosPrinterStatusListener, printerStatusFilter);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(ct,"Error!", Toast.LENGTH_LONG);
+        }
         // printerInit();
     }
 
