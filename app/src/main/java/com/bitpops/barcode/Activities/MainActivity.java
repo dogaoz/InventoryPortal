@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout page1, page2, page_settings, page_products;
     BottomNavigationView mBottomNav;
     RecyclerView page_products_recycler_view;
-    TextView customView;
     PosPrinter printer;
     TextView tv;
     private static final int REQUEST_GET_ACCOUNT = 112;
@@ -119,9 +118,6 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         updateApiCredentialsTextView();
         printer = PosPrinter.getInstance(MainActivity.this);
-        customView = (TextView)
-                LayoutInflater.from(this).inflate(R.layout.actionbar_custom_title_view_centered,
-                        null);
 
 
         setTitle("Home");
@@ -180,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                             /** progress dialog to show user that the backup is processing. */
-                            private ProgressDialog dialog = new ProgressDialog(MainActivity.this);;
+                            private ProgressDialog dialog = new ProgressDialog(MainActivity.this);
                             /** application context. */
                             private ListActivity activity;
 
@@ -196,9 +192,8 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 final ArrayList<String> products = new ArrayList<>();
-                                JSONArray json = null;
                                 try {
-                                    json = new JSONArray(json_response);
+                                    JSONArray json = new JSONArray(json_response);
 
                                     for (int i = 0; i < json.length(); i++)
                                         TransferProductActivity.addNewItem(json.getString(i),products);
@@ -239,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                             text_data = text_data.concat(information[i] + "\n");
                                         }
-                                        Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_LONG);
+                                        Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_LONG).show();
                                         //printer.printConfirmation(products.get(position), information);
                                     }
 
@@ -261,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             protected String doInBackground(final String... args) {
-                                HashMap<String, String> params = new HashMap<String,String>();
+                                HashMap<String, String> params = new HashMap<>();
                                 params.put("do","SS_getAllProducts");
                                 String result = HttpRequest.Request(MainActivity.this, "POST", params);
                                 Log.e("tag", result);
@@ -293,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.printLastConfirmation).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"Printing Last Confirmation", Toast.LENGTH_LONG);
+                Toast.makeText(MainActivity.this,"Printing Last Confirmation", Toast.LENGTH_LONG).show();
                 printer.printLastPrinted(MainActivity.this);
             }
         });
@@ -306,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     /** progress dialog to show user that the backup is processing. */
-                    private ProgressDialog dialog = new ProgressDialog(MainActivity.this);;
+                    private ProgressDialog dialog = new ProgressDialog(MainActivity.this);
                     /** application context. */
                     private ListActivity activity;
 
@@ -322,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
 
-                        if (json_response != "404" && json_response != "" && json_response != null)
+                        if (!json_response.equals("404") && !json_response.equals("") && json_response != null)
                         {
                             Intent intent = new Intent(MainActivity.this, TransferProductActivity.class);
                             intent.putExtra("LocationList", json_response);
@@ -337,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     protected String doInBackground(final String... args) {
-                        HashMap<String, String> params = new HashMap<String,String>();
+                        HashMap<String, String> params = new HashMap<>();
                         params.put("do","SS_getAllLocations");
                         String result = HttpRequest.Request(MainActivity.this, "POST", params);
                         Log.e("tag", result);
