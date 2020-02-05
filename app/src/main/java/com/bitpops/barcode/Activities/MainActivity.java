@@ -76,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
-                    if (locationAccepted && cameraAccepted)
-                        Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access location data and camera", Toast.LENGTH_LONG).show();
-                    else {
-                        Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access location data and camera", Toast.LENGTH_LONG).show();
+                    if (!locationAccepted && !cameraAccepted) {
+                        Toast.makeText(getApplicationContext(), "Permission Denied, the application might not work as expected. Please go to settings and allow required permissions.", Toast.LENGTH_LONG).show();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE)) {
                                 showMessageOKCancel("You need to allow access to both the permissions",
@@ -123,17 +121,9 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Home");
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
-            if (checkPermission()) {
-                Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(MainActivity.this, "Requesting permission", Toast.LENGTH_LONG).show();
-
+            if (!checkPermission()) {
                 requestPermission();
             }
-        }
-        else
-        {
-            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_LONG).show();
         }
     }
     @Override
