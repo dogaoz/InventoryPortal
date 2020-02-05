@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Inventory Portal</string>
+    <string name="take_barcode_picture">Take Barcode Picture</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="open_camera">OPEN CAMERA</string>
+    <string name="send_email">SEND EMAIL</string>
+    <string name="print_text">Print Text</string>
+
+    <string name="out_of_paper">The printer is out of paper</string>
+    <string name="exists_paper">The printer paper is ready</string>
+    <string name="printer_is_working">The printer is working</string>
+    <string name="printer_high_temp_alarm">Printer high temperature alarm</string>
+    <string name="motor_high_temp_alarm">Motor high temperature alarm</string>
+    <string name="printer_current_task_print_complete">The print task has been printed</string>
+    <string name="printer_exception">Printer Exception</string>
+    <string name="unknown_error">unknown status</string>
+    <string name="switch_mode">Switch Mode</string>
+    <string name="exit">Exit</string>
+    <string name="title_activity_transfer_product">TransferProductActivity</string>
+    <string name="title_activity_product_detail">ProductDetail</string>
+</resources>

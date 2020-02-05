@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+  >
+
+    <RelativeLayout
+        android:id="@+id/page_qr_code_scanner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_above="@id/mBottomNav">
+
+        <Button
+            android:id="@+id/newTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="New Transfer"
+            android:backgroundTint="@color/darkGray"
+            android:textColor="#FFF"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            />
+        <Button
+            android:id="@+id/newDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/newTransfer"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="New Delivery"
+            android:backgroundTint="@color/darkGray"
+            android:textColor="#FFF"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            />
+        <Button
+            android:id="@+id/printLastConfirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/newDelivery"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Print Last Confirmation"
+            android:backgroundTint="@color/colorGreen"
+            android:textColor="#FFF"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/page_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_above="@id/mBottomNav">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_products_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/page_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@android:color/white"
+        android:layout_above="@id/mBottomNav">
+        <ExpandableListView
+            android:id="@+id/last_actions_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ExpandableListView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/page_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_above="@id/mBottomNav">
+        <Button
+            android:id="@+id/updateDeviceTokenQR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Update Server API Address and Auth Token using QR Code"
+            android:backgroundTint="@color/colorGreen"
+            android:textColor="#FFF"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            />
+
+        <TextView
+            android:id="@+id/currentAPIandTokenText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Current API Server: "
+            android:layout_below="@+id/updateDeviceTokenQR"
+            android:textColor="@color/darkGray"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            />
+
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="labeled"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_items"
+        app:itemBackground="@color/colorPrimary"
+        app:itemTextColor="#FFF"
+        app:itemIconTint="#FFF"/>
+
+</RelativeLayout>

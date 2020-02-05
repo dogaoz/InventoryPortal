@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="105dp"
+    android:background="@android:color/white">
+    <TextView
+        android:id="@+id/textViewID"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="1"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#BBB"
+        android:background="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/slabImageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/textViewID"
+        app:srcCompat="@drawable/ic_offline_bolt_24px" />
+    <TextView
+        android:id="@+id/textViewProductID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Product ID:"
+        android:layout_toRightOf="@+id/textViewID"
+        android:textStyle="bold"
+        android:textColor="@color/darkGray"
+        android:background="@android:color/white"/>
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewID"
+        android:layout_below="@id/textViewProductID"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:text="Product Name:"
+        android:textStyle="bold"
+        android:textColor="@color/darkGray"
+        android:background="@android:color/white"/>
+    <TextView
+        android:id="@+id/textViewCurrentLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewID"
+        android:layout_below="@id/textViewProductName"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:text="Current Location:"
+        android:textStyle="bold"
+        android:textColor="@color/darkGray"
+        android:background="@android:color/white"/>
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewID"
+        android:layout_below="@id/textViewCurrentLocation"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Status:"
+        android:textStyle="bold"
+        android:textColor="@color/darkGray"
+        android:background="@android:color/white"/>
+
+</RelativeLayout>
